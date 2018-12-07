@@ -1,0 +1,29 @@
+language: python
+
+runtime:
+  nodePool: dynamic__x86_64__Ubuntu_14_04__c4_large
+
+python:
+  - 2.7 #.14
+  - 3.7 #.1
+  - pypy #6.0.0 
+  - pypy3 #6.0.0
+
+build:
+  pre_ci_boot:
+    image_name: drydock/u14pytall
+    image_tag: master
+    pull: true
+    
+  ci:
+    - python --version 
+    - pip --version #8.1.2
+    - virtualenv --version #15.1.0
+    - docker pull shippabledocker/sample_node_pvt:ecr
+    
+integrations:
+    
+  hub:
+ #Docker integration
+    - integrationName: ship-docker
+      type: dockerRegistryLogin 
