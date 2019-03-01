@@ -12,18 +12,10 @@ python:
 build:
   pre_ci_boot:
     image_name: drydock/u14pytall
-    image_tag: master
+    image_tag: v7.1.4
     pull: true
     
   ci:
     - python --version 
     - pip --version #18.1
     - virtualenv --version #16.2.0
-    - docker pull shippabledocker/sample_node_pvt:ecr
-    
-integrations:
-    
-  hub:
- #Docker integration
-    - integrationName: ship-docker
-      type: dockerRegistryLogin
